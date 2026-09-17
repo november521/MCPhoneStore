@@ -2,6 +2,13 @@
 import { ref } from 'vue'
 
 const searchQuery = ref('')
+const emit = defineEmits<{
+  search: [query: string]
+}>()
+
+function submitSearch() {
+  emit('search', searchQuery.value.trim())
+}
 </script>
 
 <template>
@@ -14,7 +21,7 @@ const searchQuery = ref('')
       这里汇集由社区开发者上传的 MCPhone 脚本APP。
       应用在开放下载前都会经过审核，主要以ZIP的格式提供。 将ZIP放到/app文件夹里即可安装。
     </p>
-    <form class="search-form" @submit.prevent>
+    <form class="search-form" @submit.prevent="submitSearch">
       <input v-model="searchQuery" type="search" placeholder="搜索应用、功能或标签" />
 
       <button type="submit">搜索</button>
