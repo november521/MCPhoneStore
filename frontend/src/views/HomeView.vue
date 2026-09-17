@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import HeroSection from '../components/HeroSection.vue'
+import AppCard from '../components/AppCard.vue'
 const apps = [
   {
     id: 1,
@@ -32,15 +33,7 @@ const apps = [
       <h2>发现应用</h2>
 
       <div class="app-grid">
-        <article v-for="app in apps" :key="app.id" class="app-card">
-          <h3>{{ app.name }}</h3>
-
-          <span>{{ app.category }}</span>
-
-          <p>{{ app.summary }}</p>
-
-          <span>版本:{{ app.version }}</span>
-        </article>
+        <AppCard v-for="app in apps" :key="app.id" :app="app" />
       </div>
     </section>
   </main>
@@ -57,13 +50,6 @@ const apps = [
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
-}
-
-.app-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 16px;
 }
 
 @media (max-width: 700px) {
