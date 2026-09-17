@@ -1,29 +1,7 @@
 <script setup lang="ts">
 import HeroSection from '../components/HeroSection.vue'
 import AppCard from '../components/AppCard.vue'
-const apps = [
-  {
-    id: 1,
-    name: '计算器',
-    summary: '添加一个计算器',
-    version: '1.0.0',
-    category: '实用工具',
-  },
-  {
-    id: 2,
-    name: '死亡榜',
-    summary: '添加一个死亡榜',
-    version: '1.0.0',
-    category: '实用工具',
-  },
-  {
-    id: 3,
-    name: '钱包',
-    summary: '查看自己的小钱钱',
-    version: '1.0.0',
-    category: '经济工具',
-  },
-]
+import { apps } from '../data/apps'
 </script>
 
 <template>

@@ -1,11 +1,5 @@
 <script setup lang="ts">
-interface AppInfo {
-  id: number
-  name: string
-  summary: string
-  version: string
-  category: string
-}
+import type { AppInfo } from '../types/app'
 
 defineProps<{
   app: AppInfo
