@@ -1,9 +1,30 @@
 :root {
-  --color-background: #ffffff;
-  --color-surface: #f7f7f5;
-  --color-text: #0d0d0d;
-  --color-text-secondary: #6b6b6b;
-  --color-border: #e5e5e5;
+  --color-brand: #4d6bfe;
+  --color-brand-dark: #3c56d9;
+  --color-brand-soft: #eef2ff;
+
+  --color-background: #f7f8fc;
+  --color-surface: #ffffff;
+
+  --color-text: #17201a;
+  --color-text-secondary: #667069;
+
+  --color-border: #dde5df;
+  --color-border-brand: #cbd5ff;
+
+  --color-gold-soft: #fff4d6;
+  --color-gold: #9a6b13;
+
+  --color-blue-soft: #eaf2fb;
+  --color-blue: #426b92;
+
+  --radius-card: 18px;
+  --radius-control: 10px;
+
+  --shadow-card: 0 1px 2px rgba(23, 32, 26, 0.04), 0 8px 24px rgba(23, 32, 26, 0.05);
+
+  --shadow-card-hover: 0 4px 10px rgba(23, 32, 26, 0.05), 0 14px 32px rgba(23, 32, 26, 0.09);
+
   --content-width: 1120px;
 }
 *,
@@ -14,33 +35,67 @@
 }
 
 html {
+  min-width: 320px;
+  background: var(--color-background);
   scroll-behavior: smooth;
 }
 
 body {
   min-width: 320px;
   min-height: 100vh;
+  margin: 0;
+
   color: var(--color-text);
   background-color: var(--color-background);
+
   font-family:
     Inter,
     ui-sans-serif,
     -apple-system,
     BlinkMacSystemFont,
     'Segoe UI',
+    'PingFang SC',
+    'Microsoft YaHei',
     sans-serif;
+
   line-height: 1.5;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
 button,
-input,
-textarea {
+input {
   font: inherit;
+}
+
+button {
+  cursor: pointer;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.sr-only {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+
+  border: 0;
+}
+
+textarea {
+  font: inherit;
 }

@@ -6,9 +6,10 @@ import { RouterLink, RouterView } from 'vue-router'
   <div class="site-shell">
     <header class="site-header">
       <div class="nav-container">
-        <RouterLink class="brand" to="/" aria-label="Notes 首页">
-          <span class="brand-mark" aria-hidden="true"></span>
-          <span>Notes</span>
+        <RouterLink class="brand" to="/" aria-label="MCPhone Store 首页">
+          <span class="brand-mark" aria-hidden="true"> M </span>
+
+          <span class="brand-name" aria-hidden="true"> MCPhone Stroe </span>
         </RouterLink>
 
         <nav class="main-nav" aria-label="主导航">
@@ -55,9 +56,15 @@ import { RouterLink, RouterView } from 'vue-router'
 }
 
 .brand-mark {
-  width: 24px;
-  height: 24px;
-  background: var(--color-text);
+  display: grid;
+  place-items: center;
+
+  width: 32px;
+  height: 32px;
+
+  background: var(--color-brand);
+  color: white;
+
   border-radius: 7px;
 }
 
@@ -69,21 +76,65 @@ import { RouterLink, RouterView } from 'vue-router'
 
 .main-nav a {
   padding: 8px 12px;
+
   color: var(--color-text-secondary);
+  text-decoration: none;
+
   font-size: 14px;
-  border-radius: 8px;
+  font-weight: 600;
+
+  border-radius: 9px;
+
   transition:
-    color 160ms ease,
-    background-color 160ms ease;
+    color 180ms ease,
+    background-color 160ms ease,
+    transform 180ms ease;
 }
 
-.main-nav a:hover,
+.nav-link:hover {
+  background: #f1f5f2;
+  color: var(--color-text);
+}
+
+.nav-link.is-active {
+  background: var(--color-brand-soft);
+  color: var(--color-brand-dark);
+}
+
+.brand:focus-visible,
+.nav-link:focus-visible {
+  outline: 3px solid rgba(77, 107, 254, 0.28);
+  outline-offset: 3px;
+}
+
+.nav-link:active {
+  transform: scale(0.97);
+}
+
 .main-nav a.router-link-exact-active {
   color: var(--color-text);
   background: var(--color-surface);
 }
 
 @media (max-width: 640px) {
+  .header-inner {
+    min-height: 62px;
+    padding: 0 16px;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+  }
+
+  .brand-name {
+    font-size: 15px;
+  }
+
+  .nav-link {
+    padding: 8px 10px;
+  }
+
   .nav-container {
     width: min(100% - 32px, var(--content-width));
     height: 64px;
