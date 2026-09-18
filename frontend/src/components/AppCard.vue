@@ -15,6 +15,8 @@ defineProps<{
     <p>{{ app.summary }}</p>
 
     <span>版本:{{ app.version }}</span>
+
+    <RouterLink :to="`/apps/${app.id}`" class="detail-link"> 查看详情 </RouterLink>
   </article>
 </template>
 
