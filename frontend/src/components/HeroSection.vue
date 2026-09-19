@@ -39,35 +39,33 @@ function submitSearch() {
         </form>
       </div>
 
-      <div class="block-decoration" aria-hidden="true">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
     </div>
   </section>
 </template>
 
 <style scoped>
 .hero {
-  max-width: 900px;
+  max-width: var(--content-width);
   margin: 0 auto;
-  padding: 80px 20px;
+  padding: 48px 24px 38px;
 }
 
 .hero-panel {
   position: relative;
-  overflow: hidden;
-
-  padding: 68px 64px;
+  padding: 42px 48px;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background:
+    linear-gradient(120deg, rgb(255 255 255 / 96%), rgb(245 247 255 / 92%)),
+    var(--color-surface);
+  box-shadow: 0 10px 30px rgb(44 57 119 / 4%);
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
 
-  max-width: 720px;
+  max-width: 680px;
 }
 
 .hero-badge {
@@ -89,12 +87,12 @@ function submitSearch() {
 h1 {
   max-width: 680px;
 
-  margin: 20px 0 18px;
+  margin: 16px 0 12px;
 
   color: var(--color-text);
 
-  font-size: clamp(40px, 5vw, 64px);
-  line-height: 1.08;
+  font-size: clamp(34px, 4vw, 48px);
+  line-height: 1.14;
   letter-spacing: -0.04em;
 }
 
@@ -109,19 +107,19 @@ h1 span {
 
   color: var(--color-text-secondary);
 
-  font-size: 17px;
-  line-height: 1.8;
+  font-size: 15px;
+  line-height: 1.7;
 }
 
 .search-form {
   display: flex;
   align-items: center;
   gap: 12px;
-  max-width: 640px;
-  margin-top: 30px;
-  padding: 7px;
+  max-width: 600px;
+  margin-top: 24px;
+  padding: 5px;
   border: 1px solid var(--color-border);
-  border-radius: 16px;
+  border-radius: 11px;
   background: white;
   box-shadow:
     0 2px 4px rgba(23, 32, 26, 0.04),
@@ -142,7 +140,7 @@ h1 span {
   flex: 1;
 
   min-width: 0;
-  min-height: 48px;
+  min-height: 42px;
 
   padding: 0 14px;
 
@@ -160,12 +158,12 @@ h1 span {
 }
 
 .search-form button {
-  min-height: 48px;
+  min-height: 42px;
 
   padding: 0 22px;
 
   border: 0;
-  border-radius: 10px;
+  border-radius: 7px;
 
   background: var(--color-brand);
   color: white;
@@ -211,16 +209,16 @@ h1 span {
 
 @media (max-width: 700px) {
   .hero {
-    padding: 24px 16px 12px;
+    padding: 24px 16px 28px;
   }
 
   .hero-panel {
-    padding: 40px 24px;
-    border-radius: 22px;
+    padding: 30px 24px;
+    border-radius: 14px;
   }
 
   h1 {
-    font-size: 40px;
+    font-size: 34px;
   }
 
   .hero-description {

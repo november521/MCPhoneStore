@@ -45,6 +45,7 @@ const app = apps.find((item) => item.id === appId)
         <div class="detail-layout">
           <div class="detail-main">
             <section class="content-card">
+              <p class="card-eyebrow">应用概览</p>
               <h2>应用介绍</h2>
 
               <p>
@@ -53,6 +54,7 @@ const app = apps.find((item) => item.id === appId)
             </section>
 
             <section class="content-card">
+              <p class="card-eyebrow">快速开始</p>
               <h2>安装方法</h2>
 
               <p>
@@ -66,6 +68,7 @@ const app = apps.find((item) => item.id === appId)
           </div>
 
           <aside class="info-card">
+            <p class="card-eyebrow">资源详情</p>
             <h2>应用信息</h2>
 
             <dl>
@@ -81,7 +84,7 @@ const app = apps.find((item) => item.id === appId)
 
               <div>
                 <dt>分类</dt>
-                <dd>{{ app.category }}</dd>
+                <dd><span class="category-tag category-tag-compact">{{ app.category }}</span></dd>
               </div>
 
               <div>
@@ -157,7 +160,17 @@ const app = apps.find((item) => item.id === appId)
 
   gap: 24px;
 
-  margin-bottom: 36px;
+  margin-bottom: 24px;
+  padding: 30px;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+
+  background:
+    linear-gradient(120deg, rgb(255 255 255 / 96%), rgb(245 247 255 / 82%)),
+    var(--color-surface);
+
+  box-shadow: var(--shadow-card);
 }
 
 .detail-icon {
@@ -192,11 +205,13 @@ const app = apps.find((item) => item.id === appId)
 }
 
 .category-tag {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
 
   margin-bottom: 10px;
-  padding: 5px 9px;
+  padding: 5px 8px;
 
+  border: 1px solid #d7defe;
   border-radius: 999px;
 
   background: var(--color-brand-soft);
@@ -258,6 +273,16 @@ const app = apps.find((item) => item.id === appId)
   padding: 28px;
 }
 
+.card-eyebrow {
+  margin: 0 0 6px;
+
+  color: var(--color-brand);
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
 .content-card h2,
 .info-card h2 {
   margin: 0 0 18px;
@@ -293,6 +318,8 @@ const app = apps.find((item) => item.id === appId)
   top: 96px;
 
   padding: 24px;
+
+  border-color: var(--color-border-brand);
 }
 
 .info-card dl {
@@ -306,7 +333,7 @@ const app = apps.find((item) => item.id === appId)
 
   gap: 20px;
 
-  padding: 13px 0;
+  padding: 14px 0;
 
   border-bottom: 1px solid #edf1ee;
 }
@@ -330,6 +357,16 @@ const app = apps.find((item) => item.id === appId)
   font-weight: 700;
 
   text-align: right;
+}
+
+.info-card .category-tag {
+  margin: 0;
+}
+
+.category-tag-compact {
+  padding: 4px 7px;
+
+  font-size: 11px;
 }
 
 .not-found {
@@ -431,6 +468,7 @@ const app = apps.find((item) => item.id === appId)
     flex-direction: column;
 
     gap: 18px;
+    padding: 24px;
   }
 
   .detail-icon {

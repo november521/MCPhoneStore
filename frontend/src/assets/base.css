@@ -38,6 +38,7 @@ html {
   min-width: 320px;
   background: var(--color-background);
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
 body {

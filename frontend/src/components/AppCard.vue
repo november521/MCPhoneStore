@@ -9,32 +9,40 @@ defineProps<{
 <template>
   <article class="app-card">
     <RouterLink :to="`/apps/${app.id}`" class="card-link" :aria-label="`查看 ${app.name} 详情`">
-      <div
-        class="app-icon"
-        :class="{
-          'icon-utility': app.category === '实用工具',
-          'icon-economy': app.category === '经济工具',
-          'icon-other': app.category !== '实用工具' && app.category !== '经济工具',
-        }"
-        aria-hidden="true"
-      >
-        {{ app.name.charAt(0) }}
+      <div class="card-header">
+        <div
+          class="app-icon"
+          :class="{
+            'icon-utility': app.category === '实用工具',
+            'icon-economy': app.category === '经济工具',
+            'icon-other': app.category !== '实用工具' && app.category !== '经济工具',
+          }"
+          aria-hidden="true"
+        >
+          {{ app.name.charAt(0) }}
+        </div>
+
+        <div class="app-heading">
+          <h3>{{ app.name }}</h3>
+          <p class="author">
+            {{ app.author }}
+          </p>
+        </div>
       </div>
 
-      <div class="card-title-row">
-        <h3>{{ app.name }}</h3>
+      <div class="card-body">
+        <span class="category-tag">
+          {{ app.category }}
+        </span>
 
-        <span class="category-tag">{{ app.category }}</span>
+        <p class="summary">{{ app.summary }}</p>
       </div>
-
-      <p class="summary">{{ app.summary }}</p>
 
       <div class="card-footer">
         <span class="version"> v{{ app.version }} </span>
 
-        <span class="detail-action">
-          查看详情
-          <span aria-hidden="true">-></span>
+        <span class="detail-arrow">
+          <span aria-hidden="true">→</span>
         </span>
       </div>
     </RouterLink>
@@ -78,6 +86,10 @@ defineProps<{
   box-shadow: var(--shadow-card-hover);
 }
 
+.card-link:hover .detail-arrow {
+  transform: translateX(4px);
+}
+
 .card-link:focus-visible {
   outline: 3px solid rgba(47, 125, 74, 0.28);
   outline-offset: 3px;
@@ -89,21 +101,28 @@ defineProps<{
   transform: translateY(-1px);
 }
 
+.card-header {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+}
+
 .app-icon {
   display: grid;
   place-items: center;
 
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
 
-  margin-bottom: 22px;
+  margin-bottom: 0;
 
-  border-radius: 14px;
+  border-radius: 12px;
 
   color: #fff;
 
-  font-size: 22px;
-  font-weight: 80;
+  font-size: 20px;
+  font-weight: 800;
 }
 
 .icon-utility {
@@ -116,6 +135,31 @@ defineProps<{
 
 .icon-other {
   background: #949d97;
+}
+
+.app-heading {
+  min-width: 0;
+}
+
+.app-heading h3 {
+  margin: 0 0 6px;
+
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.author {
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: 13px;
+}
+
+.card-body {
+  flex: 1;
+
+  margin-top: 18px;
 }
 
 .card-title-row {
@@ -134,6 +178,8 @@ defineProps<{
 }
 
 .category-tag {
+  display: inline-flex;
+
   flex-shrink: 0;
 
   padding: 5px 8px;
@@ -148,9 +194,7 @@ defineProps<{
 }
 
 .summary {
-  flex: 1;
-
-  margin: 14px 0 26px;
+  margin: 12px 0 22px;
 
   color: var(--color-text-secondary);
 
@@ -165,7 +209,7 @@ defineProps<{
 
   gap: 16px;
 
-  padding-top: 16px;
+  padding-top: 14px;
 
   border-top: 1px solid #edf1ee;
 }
@@ -176,17 +220,14 @@ defineProps<{
   font-size: 12px;
 }
 
-.detail-action {
+.detail-arrow {
   color: var(--color-brand-dark);
 
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 700;
-}
 
-.card-link:hover .detail-action {
-  color: var(--color-brand);
+  transition: transform 180ms ease;
 }
-
 
 
 </style>

@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRoute } from 'vue-router'
+
+const route = useRoute()
 </script>
 
 <template>
@@ -7,14 +9,19 @@ import { RouterLink, RouterView } from 'vue-router'
     <header class="site-header">
       <div class="nav-container">
         <RouterLink class="brand" to="/" aria-label="MCPhone Store 首页">
-          <span class="brand-mark" aria-hidden="true"> M </span>
+          <span class="brand-mark" aria-hidden="true">M</span>
 
-          <span class="brand-name" aria-hidden="true"> MCPhone Stroe </span>
+          <span class="brand-name">MCPhone Store</span>
         </RouterLink>
 
         <nav class="main-nav" aria-label="主导航">
-          <RouterLink to="/">首页</RouterLink>
-          <RouterLink to="/about">关于</RouterLink>
+          <RouterLink
+            to="/"
+            :class="{ 'is-active': route.name === 'home' || route.name === 'app-detail' }"
+          >
+            发现应用
+          </RouterLink>
+          <RouterLink to="/about">关于商店</RouterLink>
         </nav>
       </div>
     </header>
@@ -34,16 +41,17 @@ import { RouterLink, RouterView } from 'vue-router'
   z-index: 10;
   border-bottom: 1px solid var(--color-border);
   background: rgb(255 255 255 / 88%);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px) saturate(1.15);
 }
 
 .nav-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: min(100% - 48px, var(--content-width));
-  height: 72px;
+  width: 100%;
+  height: 68px;
   margin: 0 auto;
+  padding: 0 32px;
 }
 
 .brand {
@@ -65,7 +73,8 @@ import { RouterLink, RouterView } from 'vue-router'
   background: var(--color-brand);
   color: white;
 
-  border-radius: 7px;
+  border-radius: 9px;
+  box-shadow: 0 4px 12px rgb(77 107 254 / 22%);
 }
 
 .main-nav {
@@ -81,7 +90,7 @@ import { RouterLink, RouterView } from 'vue-router'
   text-decoration: none;
 
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
 
   border-radius: 9px;
 
@@ -91,37 +100,28 @@ import { RouterLink, RouterView } from 'vue-router'
     transform 180ms ease;
 }
 
-.nav-link:hover {
+.main-nav a:hover {
   background: #f1f5f2;
   color: var(--color-text);
 }
 
-.nav-link.is-active {
-  background: var(--color-brand-soft);
-  color: var(--color-brand-dark);
-}
-
 .brand:focus-visible,
-.nav-link:focus-visible {
+.main-nav a:focus-visible {
   outline: 3px solid rgba(77, 107, 254, 0.28);
   outline-offset: 3px;
 }
 
-.nav-link:active {
+.main-nav a:active {
   transform: scale(0.97);
 }
 
+.main-nav a.is-active,
 .main-nav a.router-link-exact-active {
-  color: var(--color-text);
-  background: var(--color-surface);
+  color: var(--color-brand-dark);
+  background: var(--color-brand-soft);
 }
 
 @media (max-width: 640px) {
-  .header-inner {
-    min-height: 62px;
-    padding: 0 16px;
-  }
-
   .brand-mark {
     width: 34px;
     height: 34px;
@@ -131,13 +131,9 @@ import { RouterLink, RouterView } from 'vue-router'
     font-size: 15px;
   }
 
-  .nav-link {
-    padding: 8px 10px;
-  }
-
   .nav-container {
-    width: min(100% - 32px, var(--content-width));
     height: 64px;
+    padding: 0 16px;
   }
 }
 </style>
